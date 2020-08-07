@@ -6,7 +6,7 @@
     android:layout_height="60dp"
     android:layout_weight="1"
     android:background="#FFFF"
-    android:drawableLeft="@drawable/persona"
+    android:drawableLeft="@drawable/carroo"
     android:textAlignment="center"
     android:textColor="#FFFFFF"
     android:textSize="30sp"

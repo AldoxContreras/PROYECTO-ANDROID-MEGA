@@ -4,73 +4,163 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFDFD"
-    tools:context=".Menuc">
+    android:background="@drawable/logui"
+    tools:context=".Menua">
 
-
-    <ImageView
-        android:id="@+id/btnAdminCita"
-        android:layout_width="163dp"
-        android:layout_height="149dp"
-        android:background="@drawable/bordeboton2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881"
-        app:srcCompat="@drawable/ic_admincitas" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="222dp"
-        android:layout_height="24dp"
-        android:text="MEGAElectrico SA de CV"
-        android:textColor="#000000"
-        android:textSize="19dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="216dp"
-        android:layout_height="223dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.027"
-        app:srcCompat="@drawable/ic_logo2empb" />
-
-    <TextView
-        android:id="@+id/tvBienvenidoc"
+        android:id="@+id/tvBienvenidoem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368" />
+        app:layout_constraintVertical_bias="0.069" />
 
-    <ImageView
-        android:id="@+id/btnAdminClientes"
-        android:layout_width="163dp"
-        android:layout_height="149dp"
-        android:background="@drawable/bordeboton2"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/tvmenua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:fontFamily="@font/salsa"
+        android:text="Menú empleado"
+        android:textColor="@color/color_fond"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnAdminClientes"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="272dp"
+        android:layout_marginRight="272dp"
+        android:background="@drawable/bordeboton2"
+        android:contentDescription="@string/descripcion"
+        android:src="@drawable/persona"
+        android:tint="@color/color_fondo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvmenua" />
+
+    <TextView
+        android:id="@+id/tvbajo"
+        android:layout_width="295dp"
+        android:layout_height="35dp"
+
+        android:fontFamily="@font/salsa"
+        android:text="MEGA Autoelectrico S.A de C.V"
+        android:textColor="#e65100"
+        android:textSize="19dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.581"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.555"
-        app:srcCompat="@drawable/ic_adminclientes" />
+        app:layout_constraintVertical_bias="0.977" />
+
+    <TextView
+        android:id="@+id/tvcita"
+        android:layout_width="98dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:fontFamily="@font/salsa"
+        android:gravity="center"
+        android:text="Administración de clientes"
+        android:textColor="@color/color_fond"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAdminClientes"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvadministrar"
+        android:layout_width="98dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
+        android:fontFamily="@font/salsa"
+        android:gravity="center"
+        android:text="Administración de citas"
+        android:textColor="@color/color_fond"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.971"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAdminCitaa"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/btnAdminCitaa"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:background="@drawable/bordeboton2"
+        android:contentDescription="@string/descripcion"
+        android:src="@drawable/calendario"
+        android:tint="@color/color_fondo"
+        app:layout_constraintBottom_toTopOf="@+id/tvbajo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.657"
+        app:layout_constraintStart_toEndOf="@+id/btnAdminClientes"
+        app:layout_constraintTop_toBottomOf="@+id/tvmenua"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/imageViewSalir"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/bordeboton2"
+        android:contentDescription="@string/descripcion"
+        android:tint="@color/color_fondo"
+        app:layout_constraintBottom_toTopOf="@+id/tvbajo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvmenua"
+        app:layout_constraintVertical_bias="0.81"
+        app:srcCompat="@drawable/salir" />
+
+    <TextView
+        android:id="@+id/tvsalir"
+        android:layout_width="47dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
+        android:fontFamily="@font/salsa"
+        android:gravity="center"
+        android:text="Salir"
+        android:textColor="@color/color_fond"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.619"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewSalir"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

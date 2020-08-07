@@ -4,46 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFDFD"
+    android:background="@drawable/logui"
     tools:context=".Menuc">
 
-
-    <ImageView
-        android:id="@+id/btnUbicacion"
-        android:layout_width="135dp"
-        android:layout_height="112dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/bordeboton2"
-        android:src="@drawable/ic_ubicacion"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.796" />
-
     <TextView
-        android:id="@+id/tvBienvenidoc"
+        android:id="@+id/tvBienvenidocli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="36sp"
+        android:fontFamily="@font/salsa"
+        android:textColor="@color/color_fond"
+        android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37" />
+        app:layout_constraintVertical_bias="0.069" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="237dp"
-        android:layout_height="26dp"
-
-        android:text="MEGAElectrico S.A de C.V"
-        android:textColor="#000000"
+        android:id="@+id/tvbajo"
+        android:layout_width="295dp"
+        android:layout_height="35dp"
+        android:fontFamily="@font/salsa"
+        android:text="MEGA Autoelectrico S.A de C.V"
+        android:textColor="#e65100"
         android:textSize="19dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,47 +38,162 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="216dp"
-        android:layout_height="223dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.031"
-        app:srcCompat="@drawable/ic_logo2empb" />
 
-    <ImageView
-        android:id="@+id/btnRegistrarV"
-        android:layout_width="135dp"
-        android:layout_height="112dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+    <TextView
+        android:id="@+id/tvmenuc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:fontFamily="@font/salsa"
+        android:text="Menú cliente"
+        android:textColor="@color/color_fond"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnCita"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="272dp"
         android:background="@drawable/bordeboton2"
-        android:src="@drawable/ic_carroc"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.957"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.547" />
+        android:contentDescription="@string/descripcion"
 
-    <ImageView
-        android:id="@+id/btnAgendarCita"
-        android:layout_width="135dp"
-        android:layout_height="112dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:tint="#000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvmenuc"
+        app:srcCompat="@android:drawable/ic_menu_today" />
+
+    <TextView
+        android:id="@+id/tvcita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="154dp"
+        android:contentDescription="@string/descripcion"
+        android:fontFamily="@font/salsa"
+        android:text="Agendar cita"
+
+        android:textColor="@color/color_fond"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCita"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvvehiculo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="154dp"
+        android:fontFamily="@font/salsa"
+        android:text="Registrar vehículo"
+        android:textColor="@color/color_fond"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.769"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCarro"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvmapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginEnd="310dp"
+        android:layout_marginRight="310dp"
+        android:layout_marginBottom="296dp"
+        android:fontFamily="@font/salsa"
+        android:text="Ubicación del taller"
+        android:textColor="@color/color_fond"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvbajo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.367"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnUbicacionc"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvsalir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="273dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="296dp"
+        android:fontFamily="@font/salsa"
+        android:text="Salir"
+        android:textColor="@color/color_fond"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvbajo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/btnCarro"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
         android:background="@drawable/bordeboton2"
-        android:src="@drawable/ic_agendarc"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:contentDescription="@string/descripcion"
+        android:tint="@color/color_fond"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.547" />
+        app:layout_constraintStart_toEndOf="@+id/btnCita"
+        app:layout_constraintTop_toBottomOf="@+id/tvmenuc"
+        app:srcCompat="@drawable/carroo" />
 
+    <ImageButton
+        android:id="@+id/btnUbicacionc"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="63dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:background="@drawable/bordeboton2"
+        android:contentDescription="@string/descripcion"
+        android:tint="@color/color_fond"
+        app:layout_constraintEnd_toStartOf="@+id/tvmapa"
+        app:layout_constraintStart_toEndOf="@+id/tvmapa"
+        app:layout_constraintTop_toBottomOf="@+id/tvcita"
+        app:srcCompat="@drawable/mapa" />
+
+    <ImageButton
+        android:id="@+id/imageView5"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="134dp"
+        android:background="@drawable/bordeboton2"
+        android:contentDescription="@string/descripcion"
+        android:tint="@color/color_fond"
+        app:layout_constraintBottom_toTopOf="@+id/tvbajo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintStart_toEndOf="@+id/btnUbicacionc"
+        app:layout_constraintTop_toBottomOf="@+id/tvvehiculo"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/salir" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

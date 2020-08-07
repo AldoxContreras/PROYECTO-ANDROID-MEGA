@@ -16,27 +16,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Menuc extends AppCompatActivity {
-    ImageView btnCita, btnCarro, btnUbicacion;
+    ImageView btnCita, btnCarro, btnUbicacionc;
     ConexionMysql conexion;
-    TextView tvBienvenidoc;
+    TextView tvBienvenidocli;
     Bundle bundle;
+    String Nombrecli;
     int IDcli;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menuc);
-        getSupportActionBar().hide();//eliminar barra
 
+
+        tvBienvenidocli=findViewById(R.id.tvBienvenidocli);
         bundle = getIntent().getExtras();
-//        IDcli = bundle.getInt("IDcli");
+        IDcli = bundle.getInt("IDcli");
+        //Nombrecli = bundle.getString("Nombrecli");
+
         conexion= new ConexionMysql();
 
-        btnCita=findViewById(R.id.btnAgendarCita);
-        btnCarro=findViewById(R.id.btnRegistrarV);
-        tvBienvenidoc=findViewById(R.id.tvBienvenidoc);
-        btnUbicacion=findViewById(R.id.btnUbicacion);
 
+
+
+        btnCita=findViewById(R.id.btnCita);
         btnCita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +49,7 @@ public class Menuc extends AppCompatActivity {
             }
         });
 
+        btnCarro=findViewById(R.id.btnCarro);
         btnCarro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,32 +58,33 @@ public class Menuc extends AppCompatActivity {
                 startActivity(ventanarca);
             }
         });
-        btnUbicacion.setOnClickListener(new View.OnClickListener() {
+
+        btnUbicacionc=findViewById(R.id.btnUbicacionc);
+        btnUbicacionc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent ventanaubi = new Intent(Menuc.this, Ubicacionc.class);
-                Menuc.this.startActivity(ventanaubi);
+                startActivity(ventanaubi);
             }
         });
+
         try {
             Consulta();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public void Consulta() throws SQLException {
         Connection c = conexion.Conectar();
         if(c !=null){
             PreparedStatement bienvenida = null;
-            bienvenida = c.prepareStatement("select * from cliente where IDcli = '" + IDcli + "'"  );
+            bienvenida = c.prepareStatement("Select * from cliente where IDcli= '"+IDcli+"'");
             ResultSet rs = bienvenida.executeQuery();
             if (rs.next()){
-                tvBienvenidoc.setText("Bienvenido: " + rs.getString("Nombre"));
+                tvBienvenidocli.setText("Bienvenid@ " + rs.getString("Nombrecli"));
             }
         }
         c.close();
     }
 }
-

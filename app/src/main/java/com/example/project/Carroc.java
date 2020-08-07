@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,45 +20,65 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Carroc extends AppCompatActivity {
-TextView etModelo,etMarca, etMatricula;
-Button btnRegistrar;
+TextView etmatricula,etmarca, etmodelo;
+Button btnregistrar;
 Bundle bundle;
 String modelo,marca,matricula;
 ConexionMysql conexion;
+ImageView btnConsultarV;
+Spinner spvehiculos;
+
 int IDcli;
 
     @Override
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_carroc);
-        getSupportActionBar().hide();//eliminar barra
+        setContentView(R.layout.activity_registroauto);
 
-        etModelo=findViewById(R.id.etModelo);
-        etMarca=findViewById(R.id.etMarca);
-        etMatricula=findViewById(R.id.etMatricula);
-        btnRegistrar=findViewById(R.id.btnRegistrar);
+
         conexion = new ConexionMysql();
+
+        spvehiculos=findViewById(R.id.spvehiculos);
+        etmatricula=findViewById(R.id.etmatricula);
+        etmarca=findViewById(R.id.etmarca);
+        etmodelo=findViewById(R.id.etmodelo);
+        btnregistrar=findViewById(R.id.btnregistrar);
+
         bundle = getIntent().getExtras();
         IDcli = bundle.getInt("IDcli");
 
-        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+        btnConsultarV=findViewById(R.id.btnConsultarV);
+        btnConsultarV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            matricula=etMatricula.getText().toString();
-            marca=etMarca.getText().toString();
-            modelo=etModelo.getText().toString();
-
-            IDcli=IDcli;
-
-                operaABM operaabm = new operaABM();
-                operaabm.execute("insert into vehiculo(matricula, marca, modelo,IDcli) values (?,?,?,?)", "A");
-               //  operaabm.execute("insert into vehiculo(matricula, marca, modelo, IDcli) values (?,?,?,?)", "A");
+                Intent ventanaconsulta = new Intent(Carroc.this,ConsultaCarroClientes.class);
+                ventanaconsulta.putExtra("IDcli",IDcli);
+                startActivity(ventanaconsulta);
             }
         });
-        conexion = new ConexionMysql();
+
+
+
+        btnregistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                IDcli=IDcli;
+
+            matricula=etmatricula.getText().toString();
+            marca=etmarca.getText().toString();
+            modelo=etmodelo.getText().toString();
+
+               operaABM operaabm = new operaABM();
+               operaabm.execute("insert into vehiculo(matricula, marca, modelo,IDcli) values (?,?,?,?)", "A");
+
+            }
+        });
+
 }
     public class operaABM extends AsyncTask<String,String,String>{
         String mensaje = "";
+        boolean exito= false;
 
         @Override
         protected void onPostExecute(String r) {

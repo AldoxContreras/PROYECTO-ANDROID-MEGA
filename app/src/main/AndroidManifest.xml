@@ -14,16 +14,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Main2Activity"></activity>
 
-        <activity android:name=".Menuc"></activity>
-        <activity android:name=".Menua">
-        </activity>
-
+      <activity android:name=".Carroc"></activity>
         <activity android:name=".Citac"></activity>
-        <activity android:name=".Carroc"></activity>
         <activity android:name=".ConsultaCita"></activity>
-        <activity android:name=".AdminCliente"></activity>
+        <activity android:name=".Main2Activity"></activity>
+       <activity android:name=".Menua" ></activity>
+        <activity android:name=".Menuc"></activity>
+        <activity android:name=".Registrocliente"></activity>
+        <activity android:name=".Ubicacionc"></activity>
+        <activity android:name=".ConsultaCarroClientes"></activity>
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -32,6 +32,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

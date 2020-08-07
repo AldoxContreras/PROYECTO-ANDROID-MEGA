@@ -14,23 +14,32 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Menua extends AppCompatActivity {
-    ImageView btnAdminCita,btnAdminClientes;
-    TextView tvBienvenido;
+    ImageView btnAdminCitaa,btnAdminClientes;
+    TextView tvBienvenidoem;
     ConexionMysql conexion;
     Bundle bundle;
-    int idem;
+    String Nombreem;
+    int IDem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menua);
-        btnAdminCita = findViewById(R.id.btnAdminCita);
+        btnAdminCitaa = findViewById(R.id.btnAdminCitaa);
         btnAdminClientes = findViewById(R.id.btnAdminClientes);
 
+        bundle=getIntent().getExtras();
+        IDem = bundle.getInt("IDem");
+        Nombreem = bundle.getString("Nombreem");
+        tvBienvenidoem=findViewById(R.id.tvBienvenidoem);
 
-        tvBienvenido = findViewById(R.id.tvBienvenidoc);
         conexion = new ConexionMysql();
 
-        btnAdminCita.setOnClickListener(new View.OnClickListener() {
+        try {
+            Consulta();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        btnAdminCitaa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent ventanaAdC = new Intent(Menua.this, ConsultaCita.class);
@@ -38,29 +47,24 @@ public class Menua extends AppCompatActivity {
             }
         });
 
-
-        try {
-            Consulta();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         btnAdminClientes = findViewById(R.id.btnAdminClientes);
         btnAdminClientes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ventanaAdCli = new Intent(Menua.this, AdminCliente.class);
+                Intent ventanaAdCli = new Intent(Menua.this, Registrocliente.class);
                 startActivity(ventanaAdCli);
             }
         });
     }
+
     public void Consulta() throws SQLException {
         Connection c = conexion.Conectar();
         if(c !=null){
             PreparedStatement bienvenida = null;
-            bienvenida = c.prepareStatement("select * from empleado where IDem = '" + idem + "'"  );
+            bienvenida = c.prepareStatement("Select Nombreem from empleado where IDem in (Select IDem from empleado_usuario where usuario= '" + Nombreem + "'"  );
             ResultSet rs = bienvenida.executeQuery();
             if (rs.next()){
-                tvBienvenido.setText("Bienvenido: " + rs.getString("Nombre"));
+                tvBienvenidoem.setText("Bienvenido " + rs.getString("Nombreem"));
             }
         }
         c.close();

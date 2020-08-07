@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Registrocliente">
+
+    <ImageView
+        android:id="@+id/imageViewCarro"
+        android:layout_width="335dp"
+        android:layout_height="307dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="25dp"
+        android:background="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/cliente" />
+
+    <TextView
+        android:id="@+id/tvsuperior"
+        android:layout_width="418dp"
+        android:layout_height="86dp"
+        android:layout_marginBottom="1dp"
+        android:background="#2b2925"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="98dp"
+        android:layout_height="83dp"
+        android:layout_marginEnd="276dp"
+        android:layout_marginRight="276dp"
+        android:layout_marginBottom="562dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvbajo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_meca" />
+
+    <ScrollView
+        android:layout_width="336dp"
+        android:layout_height="472dp"
+        android:layout_marginTop="256dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvtitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:fontFamily="@font/salsa"
+                android:gravity="center"
+                android:text="REGISTRO DE CLIENTE"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp" />
+
+
+            <TextView
+                android:id="@+id/tvdatos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:fontFamily="@font/salsa"
+                android:freezesText="false"
+                android:gravity="center"
+                android:text="DATOS"
+                android:textColor="@color/color_lauch"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tvnombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:fontFamily="@font/salsa"
+
+                android:freezesText="false"
+                android:text="Nombre"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/etnombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:ems="10"
+                android:fontFamily="@font/salsa"
+                android:hint="Nombre del cliente"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvseparar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvape1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:fontFamily="@font/salsa"
+
+                android:text="Apellido paterno"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/etape1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:ems="10"
+                android:fontFamily="@font/salsa"
+                android:hint="Apellido el cliente"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvsepararr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvape2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:fontFamily="@font/salsa"
+                android:text="Apellido materno"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/etape2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:ems="10"
+                android:fontFamily="@font/salsa"
+                android:hint="Apellido del cliente"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvdireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:fontFamily="@font/salsa"
+                android:text="Dirección"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/etdireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:ems="10"
+                android:fontFamily="@font/salsa"
+                android:hint="Dirección del cliente"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvsepararrr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvtelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:fontFamily="@font/salsa"
+                android:text="Teléfono"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/ettelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:ems="10"
+                android:fontFamily="@font/salsa"
+                android:hint="Teléfono del cliente"
+                android:inputType="textPersonName"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvsepararrrr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvusuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:fontFamily="@font/salsa"
+                android:text="Usuario"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/etusuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:ems="10"
+                android:fontFamily="@font/salsa"
+                android:hint="Usuario del cliente"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvsse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvcontra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:fontFamily="@font/salsa"
+                android:text="Contraseña"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/etcontra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:ems="10"
+                android:fontFamily="@font/salsa"
+                android:hint="Contraseña del cliente"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvsse2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvestado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:fontFamily="@font/salsa"
+                android:text="Estado"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/etestado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fond"
+                android:ems="10"
+                android:fontFamily="@font/salsa"
+                android:hint="Estado del cliente (Activo o Inactivo)"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/btnregistrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordeboton2"
+                android:fontFamily="@font/salsa"
+                android:text="Registrar"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tvconusltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Consultar"
+        android:textColor="#e65100"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvsuperior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.924"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.87" />
+
+    <ImageButton
+        android:id="@+id/imageViewconsultar"
+        android:layout_width="62dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/bordeboton2"
+        android:contentDescription="@string/descripcion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

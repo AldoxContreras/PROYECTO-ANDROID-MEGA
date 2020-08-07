@@ -1,4 +1,6 @@
 package com.example.project;
 
-public class Ubicacionc {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Ubicacionc extends AppCompatActivity {
 }

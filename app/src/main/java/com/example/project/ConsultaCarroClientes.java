@@ -3,11 +3,11 @@ package com.example.project;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,46 +18,48 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ConsultaCita extends AppCompatActivity {
-    ListView listaCita;
-    ConexionMysql conexion;
-    TextView texto;
+public class ConsultaCarroClientes extends AppCompatActivity {
 
-    String  IDcita, hora, fecha, motivo, IDcli, matricula;
-   // int IDcli, IDcita;
+    ListView lvcarroscliente;
+    ConexionMysql conexion;
+    String vehiculo;
+
+    int IDcli;
     Bundle bundle;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       //setContentView(R.layout.activity_consultacita);
-
+        setContentView(R.layout.activity_consultacarrosclientes);
 
         bundle = getIntent().getExtras();
+        IDcli = bundle.getInt("IDcli");
 
+        lvcarroscliente = findViewById(R.id.lvcarroscliente);
 
-        //texto=findViewById(R.id.texto);
-        texto.setText("LISTADO DE CITAS:"+bundle.getString("cita"));
+        conexion = new ConexionMysql();
 
-
-
-       // listaCita = findViewById(R.id.listaCita);
-        conexion=new ConexionMysql();
         Consultar con = new Consultar();
         con.execute("");
-        /*listaCita.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        lvcarroscliente.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                citas=(listaCita.getItemAtPosition(position).toString());
-                Intent ventanaconcita=new Intent(ConsultaCita.this,Citac.class);
-                ventanaconcita.putExtra("cita", citas);
-                ventanaconcita.putExtra("idcli",idcli);
-                startActivity(ventanaconcita);
+                vehiculo =(lvcarroscliente.getItemAtPosition(position).toString());
+
+                Intent ventana = new Intent(ConsultaCarroClientes.this, Menu.class);
+                ventana.putExtra("matricula", vehiculo );
+                ventana.putExtra("IDcli", IDcli);
+                startActivity(ventana);
                 finish();
             }
-        });*/
-}
-    public void llenarcita(ArrayList datos){
-        ArrayAdapter adaptador = new ArrayAdapter(getApplicationContext(),R.layout.row,datos);
-        listaCita.setAdapter(adaptador);
+        });
+    }
+
+    public void llenarlistavehiculo(ArrayList datos){
+        ArrayAdapter adaptador = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,datos);
+        lvcarroscliente.setAdapter(adaptador);
+
     }
 
     public class Consultar extends AsyncTask<String,String,String> {
@@ -65,7 +67,7 @@ public class ConsultaCita extends AppCompatActivity {
         String mensaje="";
         boolean exito = false;
         ArrayList datos = new ArrayList();
-
+      //  ArrayList datos2 = new ArrayList();
 
         //Se ejecuta despues del doinbackground
         @Override
@@ -74,11 +76,14 @@ public class ConsultaCita extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
             if(exito){
 
-                llenarcita(datos);
+                llenarlistavehiculo(datos);
+
 
             }else{
                 datos.clear();
-                llenarcita(datos);
+                llenarlistavehiculo(datos);
+
+
             }
         }
 
@@ -92,29 +97,34 @@ public class ConsultaCita extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
 
-            Connection conectar=conexion.Conectar();
+        Connection conectar=conexion.Conectar();
 
             if (conectar != null){
 
-                String query="select * from cita";
 
+                String query="select * from vehiculo where IDcli = ?";
                 try {
+
                     PreparedStatement ps=conectar.prepareStatement(query);
+                    ps.setInt(1,IDcli);
                     ResultSet rs=ps.executeQuery();
 
                     if(rs.next()){
                         exito=true;
+                        IDcli=rs.getInt("IDcli");
 
                         do {
 
-                            datos.add(rs.getString("motivo"));
-                            mensaje = "Citas disponibles";
+                            datos.add(rs.getString("matricula")+" - "+rs.getString("marca")+" - "+rs.getString("modelo"));
+                            mensaje = "Vehiculos registrados";
                         }while (rs.next());
+
 
                     }
                     else{
-                        mensaje="No hay citas disponibles";
+                        mensaje="No hay vehiculos registrados";
                     }
+
 
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -136,4 +146,3 @@ public class ConsultaCita extends AppCompatActivity {
         }
     }
 }
-

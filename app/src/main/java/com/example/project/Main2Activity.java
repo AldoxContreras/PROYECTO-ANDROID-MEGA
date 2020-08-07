@@ -1,4 +1,5 @@
 package com.example.project;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,97 +8,136 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
-    String Usua;
-    String Nombre,Apellido1,Apellido2,Correo,Contrasena;
-   EditText etNombre,Usuario,etPrimerApellido,etSegundoApellido,etCorreo,etContrasena;
-   Button btnRegistrarse;
-
-    ConexionMysql conexion;
+    EditText etUsuario,etContraseña;
+    Button bt1,bt2;
     Bundle bundle;
-
+    ConexionMysql mysqlcon;
+    ProgressBar pbInicio;
+    String Nombreem, Nombrecli;
+    int IDem, IDcli;
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        Usuario = findViewById(R.id.Usuario);
-        etNombre =  findViewById(R.id.etNombre);
-        etPrimerApellido = findViewById(R.id.etPrimerApellido);
-        etSegundoApellido =  findViewById(R.id.etSegundoApellido);
-        etCorreo = findViewById(R.id.etCorreo);
-        btnRegistrarse =  findViewById(R.id.btnRegistrarse);
-        etContrasena=findViewById(R.id.etContrasena);
-        btnRegistrarse.setOnClickListener(this);
-        conexion = new ConexionMysql();
+        etUsuario=findViewById(R.id.etUsuario);
+        etContraseña=findViewById(R.id.etContraseña);
+        bt1=findViewById(R.id.btnIniciar);
+        pbInicio=findViewById(R.id.pbInicio);
+        mysqlcon = new ConexionMysql();
+
+
+        pbInicio.setVisibility(View.INVISIBLE);
+        bt1.setOnClickListener(this);
         bundle=getIntent().getExtras();
-}
-    @Override
-    public void onClick(View v) {
-        if(v== btnRegistrarse){
-           Usua=Usuario.getText().toString();
-            Nombre = etNombre.getText().toString();
-            Apellido1 = etPrimerApellido.getText().toString();
-            Apellido2 = etSegundoApellido.getText().toString();
-            Correo = etCorreo.getText().toString();
-            Contrasena = etContrasena.getText().toString();
-            operaABM opeaABM = new operaABM();
-            opeaABM.execute("insert into cliente (IDcli, Nombre, Apellido1, Apellido2, Dirección,Telefono) values (?,?,?,?,?,?) ", "A");
+
+    }
+    public void onClick (View v){
+        if(v==bt1){
+            InicioSesion inisesion=new InicioSesion();
+            inisesion.execute("");
         }
-    } //cierre del on click
-    public class operaABM extends AsyncTask<String, String, String>{
-        boolean exito = false;
-        String mensaje = "";
+    }//cierre del metodo onclick
+
+    public class InicioSesion extends AsyncTask<String,String,String> {
+        String mensaje="";
+        boolean exito=false;
+        String Usuario=etUsuario.getText().toString();
+        String Contraseña=etContraseña.getText().toString();
+        String tipo;
+
+
         @Override
-    protected void onPostExecute (String r){
-            Toast.makeText(getApplicationContext(), r, Toast.LENGTH_SHORT).show();
-        if (exito){
-            Intent ventana=new Intent(Main2Activity.this,MainActivity.class);
-            startActivity(ventana);
-        }
-        }
+        protected void onPostExecute(String s){
+            pbInicio.setVisibility(View.GONE);
+            Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
+            if(exito){
+                if(tipo.equals("E")){
+                    Intent ventanaa = new Intent(Main2Activity.this, Menua.class);
+                    ventanaa.putExtra("IDem", IDem);
+                    ventanaa.putExtra("Nombreem", Nombreem);
+                    startActivity(ventanaa);
+                }else if (tipo.equals("C")){
+                    Intent ventanac = new Intent(Main2Activity.this, Menuc.class);
+                    ventanac.putExtra("IDcli", IDcli);
+                    ventanac.putExtra("Nombrecli",Nombrecli);
+                    startActivity(ventanac);
+                }
+            }
+        }//Cierre onPost
         @Override
         protected void onPreExecute(){
-        }
+            pbInicio.setVisibility(View.VISIBLE);
+
+
+        }//Cierre onPre
         @Override
-        protected String doInBackground(String... strings){
-            Connection c=conexion.Conectar();
-            if(c!= null){
+        protected String doInBackground(String... strings) {
+            Connection conectar=mysqlcon.Conectar();
+            if(conectar !=null){
+                String query="Select * from usuario where usuario=? and contrasenia=?";
                 try {
-                    PreparedStatement ps=c.prepareStatement(strings[0]);
-                    if(strings[1].equals("A")){
-                        ps.setString(1,Usua);
-                        ps.setString(2,Nombre);
-                        ps.setString(3,Apellido1);
-                        ps.setString(4,Apellido2);
-                        ps.setString(5,Correo);
-                        ps.setString(6,Contrasena);
-                        if (ps.executeUpdate()>0){
-                            if (strings[1].equals("A")){
-                                mensaje="Registro exitoso";
-                                exito=true;
+                    PreparedStatement ps=conectar.prepareStatement(query);
+                    ps.setString(1,Usuario);
+                    ps.setString(2,Contraseña);
+                    ResultSet rs=ps.executeQuery();
+                    if(rs.next()){
+                        exito = true;
+                        tipo=rs.getString("tipo");
+                        if (tipo.equals("C")){
+                            String query2="Select IDcli from cliente where IDcli in (select IDcli from cliente_usuario where usuario=?)";
+                            PreparedStatement ps2=conectar.prepareStatement(query2);
+                            ps2.setString(1,Usuario);
+                            ResultSet rs2=ps2.executeQuery();
+                            if(rs2.next()){
+                                exito = true;
+                                IDcli=rs2.getInt("IDcli");
                             }
-                        }else{
-                            if (strings[1].equals("A")){
-                                mensaje="Registro no exitoso";
+
+                        }
+                        if (tipo.equals("E")){
+                            String query3="Select IDem from empleado where IDem in (select IDem from empleado_usuario where usuario=?)";
+                            PreparedStatement ps3=conectar.prepareStatement(query3);
+                            ps3.setString(1,Usuario);
+                            ResultSet rs3=ps3.executeQuery();
+                            if(rs3.next()){
+                                exito = true;
+                                IDem=rs3.getInt("IDem");
                             }
                         }
                     }
-                }catch (SQLException e){
+
+                    else{
+                        mensaje="Usuario o contraseña incorrecto";
+                    }
+                } catch (SQLException e) {
                     e.printStackTrace();
+                    mensaje=e.getMessage();
                 }
                 try {
-                    c.close();
+                    conectar.close();
                 }catch (SQLException e){
-                    e.printStackTrace(); }
-                }else{
-                    mensaje="Error al conectar";
+                    e.printStackTrace();
+                    mensaje=e.getMessage();
                 }
-                return mensaje;
-                }
+
             }
-    }
+            else {
+                mensaje="Error al conectar con la base de datos";
+            }
+            return mensaje;
+        }//Cierre doInBack
+
+    } //Cierre subclase iniciar sesion
+}//Cierre clase principal
+
+
+
